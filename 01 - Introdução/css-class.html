@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <input type="text" v-model="textoDigitado"
+            @keyup.enter="alterarNome2()">
+
+        <ul>
+            <li v-for="item in array" @click="alerta($event)">
+                {{item}}
+            </li>
+        </ul>
+
+        <br>
+        <hr>
+        <input type="text" v-model="textoDigitado"
+            @keyup.enter="alterarNome2()">
+
+        <ul>
+            <li v-for="item in array" style="background: white;" 
+                @click="alteraStyle($event)">
+                {{item}}
+            </li>
+        </ul>
+
+        red
+        <input @click="fillColorParagraph($event.target.value)" type="radio" name="cor" value="red" checked>
+
+        green
+        <input @click="fillColorParagraph($event.target.value)" type="radio" name="cor" value="green">
+
+        blue
+        <input @click="fillColorParagraph($event.target.value)" type="radio" name="cor" value="blue">
+
+        yellow
+        <input @click="fillColorParagraph($event.target.value)" type="radio" name="cor" value="yellow">
+
+        <br/>
+        <button @click="vermelho()">vermelho</button>
+        <button @click="verde()">verde</button>
+
+        <p v-bind:class="{red: colors.vermelho, green: colors.verde}">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur vitae repellendus cumque quod, dolores laborum eum provident minima dolorum animi rem facilis at obcaecati odio similique illum quas iure. Unde?
+        </p>
+    </div>    
+
+    <style>
+        .red{
+          background-color: red;
+        }
+
+        .green{
+            background-color: green;
+        }
+
+        .blue{
+            background-color: blue;
+        }
+
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        // vue trabalha muito com key|value
+        // el = elemento principal
+        new Vue({
+            el: '#app',
+            data: {
+                colors: {
+                    vermelho: true,
+                    verde: false
+                },
+                textoDigitado: '',
+                classParagrafo: 'red',
+                array:[]
+            },
+            methods:{
+                alterarNome(sobrenome){
+                    this.textoDigitado = sobrenome;
+                },
+                alterarNome2(){
+                    this.array.push(this.textoDigitado);
+                    this.textoDigitado = '';
+                },
+                alerta(event){
+                    alert(event.target.textContent.trim())
+                },
+                alteraStyle(event){
+                    element = event.target;
+                    debugger
+                    if(element.style.background == "white")
+                        event.target.style = "background: red";
+                    else
+                        event.target.style = "background: white";
+                },
+                fillColorParagraph(cor){
+                    this.classParagrafo = cor;
+                },
+                vermelho(){
+                   this.colors.vermelho = true; 
+                   this.colors.verde = false;
+                },
+                verde(){
+                   this.colors.vermelho = false; 
+                   this.colors.verde = true;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

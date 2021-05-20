@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <!-- com o 'v-bind' não necessita de {{}} para pegar o objeto -->
+        <img v-bind:src="srcImg" 
+             v-bind:title="titleImg">
+
+        <hr>
+
+        <!-- pode colocar somente o ':' na frente da propriedade que irá entender que quer fazer um bind -->
+        <a :href="url">Url</a>
+        <hr>
+        <p v-text="'exemplo'"></p>
+        <hr>
+        <p v-text="textPar"></p>
+        <hr>
+        <div v-html="textHtml"></div>
+    </div>    
+
+
+    <script>
+        // vue trabalha muito com key|value
+        // el = elemento principal
+        new Vue({
+            el: '#app',
+            data: {
+                srcImg: 'logo.png',
+                titleImg: 'Logo VUE',
+                url: 'http://vuejs.org',
+                textPar: "texto qualquer",
+                textHtml: "<b>texto</b> <br> qualquer 2"
+            }
+        })
+
+    </script>
+</body>
+</html>

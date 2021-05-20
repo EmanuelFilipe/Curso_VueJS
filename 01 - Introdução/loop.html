@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <br>
+        <div v-for="imagem in imagens">
+            <!-- com o 'v-bind' não necessita de {{}} para pegar o objeto -->
+            <img :src="imagem" width="300px" >
+        </div>
+
+        <hr>
+        <div v-for="fruta in frutas">
+            <!-- com o 'v-bind' não necessita de {{}} para pegar o objeto -->
+            <p>{{fruta}}</p>
+        </div>
+
+        <hr>
+        <div v-for="(fruta, index ) in frutas">
+            <!-- com o 'v-bind' não necessita de {{}} para pegar o objeto -->
+            <p>{{index}} - {{fruta}}</p>
+        </div>
+
+        <hr>
+        <div v-for="(fruta, index ) in frutas2">
+            <!-- com o 'v-bind' não necessita de {{}} para pegar o objeto -->
+            <p>{{index}} - {{fruta.nome}} / {{fruta.cor}}</p>
+        </div>
+
+        <hr>
+        <ul>
+            <li v-for="(value, key, index ) in frutas2[0]">
+                {{index}} - {{key}}: {{value}}
+            </li>
+        </ul>
+
+        <hr>
+        <ul>
+            <li v-for="(value, key) in usuario">
+               <b>{{key}}:</b> {{value}}
+            </li>
+        </ul>
+    </div>    
+
+
+    <script>
+        // vue trabalha muito com key|value
+        // el = elemento principal
+        new Vue({
+            el: '#app',
+            data: {
+                imagens: ['logo.png', 'logo2.png', 'logo3.jpg'],
+                frutas: ['Pera', 'Uva', 'Maça'],
+                frutas2: [
+                    { nome: 'Pera', cor: 'Verde' }, 
+                    { nome: 'Uva', cor: 'Verde' }, 
+                    { nome: 'Maça', cor: 'Vermelha' }
+                ],
+                usuario: {
+                    nome: "Filipe",
+                    sobrenome: 'Silva',
+                    telefone: '99310-1903',
+                    email: 'filipe@teste',
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

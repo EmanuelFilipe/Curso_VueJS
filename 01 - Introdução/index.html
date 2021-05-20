@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <p>{{ msg }}</p>
+        <p>{{ ehVerdade ? "Verdade" : "Falso" }}</p>
+        <p>{{ frutas[0] + ' e ' + frutas[1] }}</p>
+        <p>Aluno: {{ aluno.nome }}</p>
+        <p>{{ 1 + num1 }}</p>
+        <p>{{ fun() }}</p>
+        <p>{{ metodo1() }}</p>
+        <p>{{ metodo2(1) }}</p>
+    </div>    
+
+    <script>
+        // vue trabalha muito com key|value
+        // el = elemento principal
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'teste de mensagem',
+                ehVerdade: true,
+                frutas: ['Pera', 'Uva', 'Maça'],
+                aluno: { nome: 'Filipe' },
+                num1: 1,
+                fun: () => {
+                    return 'mensagem da função'
+                }
+            },
+            methods: {
+                metodo1(){
+                    return 'Fruta: ' + this.frutas
+                },
+                metodo2(index){
+                    return 'Fruta: ' + this.frutas[index]
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

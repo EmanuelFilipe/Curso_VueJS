@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <input type="text" v-model="textoDigitado">
+        <br>
+        {{textoDigitado}}
+
+        <br>
+        <div v-if="textoDigitado == 1">
+            <!-- com o 'v-bind' não necessita de {{}} para pegar o objeto -->
+            <img :src="srcImg1" :title="titleImg" width="300px" >
+        </div>
+        <div v-else-if="textoDigitado == 2">
+            <!-- com o 'v-bind' não necessita de {{}} para pegar o objeto -->
+            <img :src="srcImg2" :title="titleImg" width="300px">
+        </div>
+        <div v-else>
+            <!-- com o 'v-bind' não necessita de {{}} para pegar o objeto -->
+            <img :src="srcImg3" :title="titleImg" width="300px">
+        </div>
+    </div>    
+
+
+    <script>
+        // vue trabalha muito com key|value
+        // el = elemento principal
+        new Vue({
+            el: '#app',
+            data: {
+                textoDigitado: '',
+                srcImg1: 'logo.png',
+                srcImg2: 'logo2.png',
+                srcImg3: 'logo3.jpg',
+                titleImg: 'Logo VUE'
+            }
+        })
+
+    </script>
+</body>
+</html>

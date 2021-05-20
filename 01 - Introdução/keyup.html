@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <input type="text" v-model="textoDigitado"
+            @keyup.enter="alterarNome2()">
+
+        <ul>
+            <li v-for="item in array" @click="alerta($event)">
+                {{item}}
+            </li>
+        </ul>
+
+        <br>
+        <hr>
+        <input type="text" v-model="textoDigitado"
+            @keyup.enter="alterarNome2()">
+
+        <ul>
+            <li v-for="item in array" style="background: white;" 
+                @click="alteraStyle($event)">
+                {{item}}
+            </li>
+        </ul>
+    </div>    
+
+
+    <script>
+        // vue trabalha muito com key|value
+        // el = elemento principal
+        new Vue({
+            el: '#app',
+            data: {
+                textoDigitado: '',
+                array:[]
+            },
+            methods:{
+                alterarNome(sobrenome){
+                    this.textoDigitado = sobrenome;
+                },
+                alterarNome2(){
+                    this.array.push(this.textoDigitado);
+                    this.textoDigitado = '';
+                },
+                alerta(event){
+                    alert(event.target.textContent.trim())
+                },
+                alteraStyle(event){
+                    element = event.target;
+                    debugger
+                    if(element.style.background == "white")
+                        event.target.style = "background: red";
+                    else
+                        event.target.style = "background: white";
+                }
+
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <!-- <form >
+            <input type="text" v-model="textoDigitado">
+            v-on:click
+            <button @click="alterarNome('Silva', $event)">
+                Add
+            </button>
+            <br>
+            <label v-text="textoDigitado"></label>
+        </form> -->
+
+        <form v-on:submit.prevent="alterarNome2('Silva')">
+            <input type="text" v-model="textoDigitado">
+            <!-- v-on:click -->
+            <button type="submit">
+                Add
+            </button>
+            <br>
+            <label v-text="textoDigitado"></label>
+        </form>
+    </div>    
+
+
+    <script>
+        // vue trabalha muito com key|value
+        // el = elemento principal
+        new Vue({
+            el: '#app',
+            data: {
+                textoDigitado: '',
+            },
+            methods:{
+                alterarNome(sobrenome, event){
+                    event.preventDefault();
+                    this.textoDigitado = sobrenome;
+                    alert(event);
+                },
+                alterarNome2(sobrenome){
+                    this.textoDigitado = sobrenome;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
